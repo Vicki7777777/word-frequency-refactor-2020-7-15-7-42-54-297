@@ -3,13 +3,14 @@ import java.util.*;
 public class WordFrequencyGame {
     private static final String CALCULATE_ERROR = "Calculate Error";
     private static final String WORD_COUNT = " 1";
+    private static final String DELIMITER = "\n";
     private String SEPARATOR = "\\s+";
     public String getResult(String inputStr) {
         if (inputStr.split(SEPARATOR).length == 1) {
             return inputStr + WORD_COUNT;
         } else {
             try {
-                String[] arr = inputStr.split("\\s+");
+                String[] arr = inputStr.split(SEPARATOR);
 
                 List<Input> inputList = new ArrayList<>();
                 for (String s : arr) {
@@ -28,7 +29,7 @@ public class WordFrequencyGame {
 
                 inputList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
 
-                StringJoiner joiner = new StringJoiner("\n");
+                StringJoiner joiner = new StringJoiner(DELIMITER);
                 for (Input w : inputList) {
                     String s = w.getValue() + " " + w.getWordCount();
                     joiner.add(s);
