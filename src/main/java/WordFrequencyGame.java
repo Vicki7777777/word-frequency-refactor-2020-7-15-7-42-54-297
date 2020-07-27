@@ -7,16 +7,14 @@ public class WordFrequencyGame {
     private static final String BLANK_SPACE = " ";
     private String SEPARATOR = "\\s+";
     public String getResult(String sentence) {
-        if (sentence.split(SEPARATOR).length == 1) {
-            return sentence + WORD_COUNT;
-        } else {
+
             try {
                 List<WordInfo> wordInfoList = generateWordInfos(sentence);
                 return generateWordFrequencySentence(wordInfoList);
             } catch (Exception e) {
                 return CALCULATE_ERROR;
             }
-        }
+
     }
 
     public  List<WordInfo> generateWordInfos(String sentence){
@@ -54,9 +52,9 @@ public class WordFrequencyGame {
         Map<String, List<WordInfo>> wordsMap = new HashMap<>();
         for (WordInfo wordInfo : wordInfoList) {
             if (!wordsMap.containsKey(wordInfo.getValue())) {
-                ArrayList wordInfoarr = new ArrayList<>();
-                wordInfoarr.add(wordInfo);
-                wordsMap.put(wordInfo.getValue(), wordInfoarr);
+                ArrayList wordInfoArr = new ArrayList<>();
+                wordInfoArr.add(wordInfo);
+                wordsMap.put(wordInfo.getValue(), wordInfoArr);
             } else {
                 wordsMap.get(wordInfo.getValue()).add(wordInfo);
             }
