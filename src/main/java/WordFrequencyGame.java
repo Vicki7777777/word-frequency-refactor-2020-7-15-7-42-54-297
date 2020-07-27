@@ -6,7 +6,6 @@ public class WordFrequencyGame {
     private static final String DELIMITER = "\n";
     private static final String BLANK_SPACE = " ";
     private String SEPARATOR = "\\s+";
-
     public String getResult(String sentence) {
         if (sentence.split(SEPARATOR).length == 1) {
             return sentence + WORD_COUNT;
@@ -20,7 +19,7 @@ public class WordFrequencyGame {
         }
     }
 
-    private List<WordInfo> generateWordInfos(String sentence) {
+    public  List<WordInfo> generateWordInfos(String sentence){
         List<WordInfo> wordInfos = new ArrayList<>();
         String[] wordArray = sentence.split(SEPARATOR);
         for (String words : wordArray) {
@@ -28,23 +27,6 @@ public class WordFrequencyGame {
             wordInfos.add(wordInfo);
         }
         return wordInfos;
-    }
-
-    private String generateWordFrequencySentence(List<WordInfo> wordInfos) {
-        Map<String, List<WordInfo>> map = getListMap(wordInfos);
-
-        List<WordInfo> list = new ArrayList<>();
-        for (Map.Entry<String, List<WordInfo>> entry : map.entrySet()) {
-            WordInfo wordInfo = new WordInfo(entry.getKey(), entry.getValue().size());
-            list.add(wordInfo);
-        }
-        wordInfos = list;
-
-        wordInfos.sort((firstWordInfo, secondeWordInfo) -> secondeWordInfo.getWordCount() - firstWordInfo.getWordCount());
-
-        StringJoiner joiner = new StringJoiner(DELIMITER);
-        return  joiner.toString();
-
     }
 
     private Map<String, List<WordInfo>> getListMap(List<WordInfo> wordInfoList) {
