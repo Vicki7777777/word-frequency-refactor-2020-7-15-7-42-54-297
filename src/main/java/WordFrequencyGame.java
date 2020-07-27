@@ -5,12 +5,12 @@ public class WordFrequencyGame {
     private static final String WORD_COUNT = " 1";
     private static final String DELIMITER = "\n";
     private String SEPARATOR = "\\s+";
-    public String getResult(String inputStr) {
-        if (inputStr.split(SEPARATOR).length == 1) {
-            return inputStr + WORD_COUNT;
+    public String getResult(String word) {
+        if (word.split(SEPARATOR).length == 1) {
+            return word + WORD_COUNT;
         } else {
             try {
-                String[] words = inputStr.split(SEPARATOR);
+                String[] words = word.split(SEPARATOR);
 
                 List<WordsInput> wordsInputList = new ArrayList<>();
                 for (String s : words) {
