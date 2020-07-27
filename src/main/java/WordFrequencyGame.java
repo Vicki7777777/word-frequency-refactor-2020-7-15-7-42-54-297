@@ -2,10 +2,11 @@ import java.util.*;
 
 public class WordFrequencyGame {
     private static final String CALCULATE_ERROR = "Calculate Error";
+    private static final String WORD_COUNT = " 1";
     private String SEPARATOR = "\\s+";
     public String getResult(String inputStr) {
         if (inputStr.split(SEPARATOR).length == 1) {
-            return inputStr + " 1";
+            return inputStr + WORD_COUNT;
         } else {
             try {
                 String[] arr = inputStr.split("\\s+");
