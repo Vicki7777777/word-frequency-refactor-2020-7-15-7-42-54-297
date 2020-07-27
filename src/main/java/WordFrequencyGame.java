@@ -4,13 +4,14 @@ public class WordFrequencyGame {
     private static final String CALCULATE_ERROR = "Calculate Error";
     private static final String WORD_COUNT = " 1";
     private static final String DELIMITER = "\n";
+    private static final String BLANK_SPACE = " ";
     private String SEPARATOR = "\\s+";
-    public String getResult(String word) {
-        if (word.split(SEPARATOR).length == 1) {
-            return word + WORD_COUNT;
+    public String getResult(String sentence) {
+        if (sentence.split(SEPARATOR).length == 1) {
+            return sentence + WORD_COUNT;
         } else {
             try {
-                String[] wordArray = word.split(SEPARATOR);
+                String[] wordArray = sentence.split(SEPARATOR);
 
                 List<WordInfo> wordInfoList = new ArrayList<>();
                 for (String words : wordArray) {
@@ -31,7 +32,7 @@ public class WordFrequencyGame {
 
                 StringJoiner joiner = new StringJoiner(DELIMITER);
                 for (WordInfo w : wordInfoList) {
-                    String s = w.getValue() + " " + w.getWordCount();
+                    String s = w.getValue() + BLANK_SPACE + w.getWordCount();
                     joiner.add(s);
                 }
                 return joiner.toString();
