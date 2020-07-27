@@ -1,9 +1,9 @@
 import java.util.*;
 
 public class WordFrequencyGame {
+    private static final String CALCULATE_ERROR = "Calculate Error";
+    private String SEPARATOR = "\\s+";
     public String getResult(String inputStr) {
-
-        final String SEPARATOR = "\\s+";
         if (inputStr.split(SEPARATOR).length == 1) {
             return inputStr + " 1";
         } else {
@@ -34,7 +34,7 @@ public class WordFrequencyGame {
                 }
                 return joiner.toString();
             } catch (Exception e) {
-                return "Calculate Error";
+                return CALCULATE_ERROR;
             }
         }
     }
