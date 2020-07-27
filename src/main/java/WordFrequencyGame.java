@@ -29,7 +29,28 @@ public class WordFrequencyGame {
         return wordInfos;
     }
 
-    private Map<String, List<WordInfo>> getListMap(List<WordInfo> wordInfoList) {
+    private String generateWordFrequencySentence(List<WordInfo> wordInfos) {
+        Map<String, List<WordInfo>> map = getWordMap(wordInfos);
+
+        List<WordInfo> list = new ArrayList<>();
+        for (Map.Entry<String, List<WordInfo>> entry : map.entrySet()) {
+            WordInfo wordInfo = new WordInfo(entry.getKey(), entry.getValue().size());
+            list.add(wordInfo);
+        }
+        wordInfos = list;
+
+        wordInfos.sort((firstWordInfo, secondeWordInfo) -> secondeWordInfo.getWordCount() - firstWordInfo.getWordCount());
+
+        StringJoiner joiner = new StringJoiner(DELIMITER);
+        for (WordInfo words : wordInfos) {
+            String wordCount = words.getValue() + BLANK_SPACE + words.getWordCount();
+            joiner.add(wordCount);
+        }
+        return  joiner.toString();
+
+    }
+
+            private Map<String, List<WordInfo>> getWordMap(List<WordInfo> wordInfoList) {
         Map<String, List<WordInfo>> wordsMap = new HashMap<>();
         for (WordInfo wordInfo : wordInfoList) {
             if (!wordsMap.containsKey(wordInfo.getValue())) {
