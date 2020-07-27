@@ -3,13 +3,10 @@ import java.util.*;
 public class WordFrequencyGame {
     public String getResult(String inputStr) {
 
-
-        if (inputStr.split("\\s+").length==1) {
+        if (inputStr.split("\\s+").length == 1) {
             return inputStr + " 1";
         } else {
-
             try {
-
                 String[] arr = inputStr.split("\\s+");
 
                 List<Input> inputList = new ArrayList<>();
@@ -18,7 +15,7 @@ public class WordFrequencyGame {
                     inputList.add(input);
                 }
 
-                Map<String, List<Input>> map =getListMap(inputList);
+                Map<String, List<Input>> map = getListMap(inputList);
 
                 List<Input> list = new ArrayList<>();
                 for (Map.Entry<String, List<Input>> entry : map.entrySet()) {
@@ -31,7 +28,7 @@ public class WordFrequencyGame {
 
                 StringJoiner joiner = new StringJoiner("\n");
                 for (Input w : inputList) {
-                    String s = w.getValue() + " " +w.getWordCount();
+                    String s = w.getValue() + " " + w.getWordCount();
                     joiner.add(s);
                 }
                 return joiner.toString();
@@ -43,13 +40,12 @@ public class WordFrequencyGame {
 
     private Map<String, List<Input>> getListMap(List<Input> inputList) {
         Map<String, List<Input>> map = new HashMap<>();
-        for (Input input : inputList){
+        for (Input input : inputList) {
             if (!map.containsKey(input.getValue())) {
                 ArrayList arr = new ArrayList<>();
                 arr.add(input);
                 map.put(input.getValue(), arr);
-            }
-            else {
+            } else {
                 map.get(input.getValue()).add(input);
             }
         }
