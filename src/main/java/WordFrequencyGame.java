@@ -10,11 +10,11 @@ public class WordFrequencyGame {
             return word + WORD_COUNT;
         } else {
             try {
-                String[] words = word.split(SEPARATOR);
+                String[] wordArray = word.split(SEPARATOR);
 
                 List<WordsInput> wordsInputList = new ArrayList<>();
-                for (String s : words) {
-                    WordsInput wordsInput = new WordsInput(s, 1);
+                for (String words : wordArray) {
+                    WordsInput wordsInput = new WordsInput(words, 1);
                     wordsInputList.add(wordsInput);
                 }
 
