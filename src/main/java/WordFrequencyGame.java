@@ -6,18 +6,18 @@ public class WordFrequencyGame {
     private static final String DELIMITER = "\n";
     private static final String BLANK_SPACE = " ";
     private String SEPARATOR = "\\s+";
-    public String getResult(String sentence) {
 
-            try {
-                List<WordInfo> wordInfoList = generateWordInfos(sentence);
-                return generateWordFrequencySentence(wordInfoList);
-            } catch (Exception e) {
-                return CALCULATE_ERROR;
-            }
+    public String getResult(String sentence) {
+        try {
+            List<WordInfo> wordInfoList = generateWordInfos(sentence);
+            return generateWordFrequencySentence(wordInfoList);
+        } catch (Exception e) {
+            return CALCULATE_ERROR;
+        }
 
     }
 
-    public  List<WordInfo> generateWordInfos(String sentence){
+    public List<WordInfo> generateWordInfos(String sentence) {
         List<WordInfo> wordInfos = new ArrayList<>();
         String[] wordArray = sentence.split(SEPARATOR);
         for (String words : wordArray) {
@@ -44,7 +44,7 @@ public class WordFrequencyGame {
             String wordCount = words.getValue() + BLANK_SPACE + words.getWordCount();
             joiner.add(wordCount);
         }
-        return  joiner.toString();
+        return joiner.toString();
 
     }
 
