@@ -12,25 +12,25 @@ public class WordFrequencyGame {
             try {
                 String[] words = inputStr.split(SEPARATOR);
 
-                List<Input> inputList = new ArrayList<>();
+                List<WordsInput> wordsInputList = new ArrayList<>();
                 for (String s : words) {
-                    Input input = new Input(s, 1);
-                    inputList.add(input);
+                    WordsInput wordsInput = new WordsInput(s, 1);
+                    wordsInputList.add(wordsInput);
                 }
 
-                Map<String, List<Input>> map = getListMap(inputList);
+                Map<String, List<WordsInput>> map = getListMap(wordsInputList);
 
-                List<Input> list = new ArrayList<>();
-                for (Map.Entry<String, List<Input>> entry : map.entrySet()) {
-                    Input input = new Input(entry.getKey(), entry.getValue().size());
-                    list.add(input);
+                List<WordsInput> list = new ArrayList<>();
+                for (Map.Entry<String, List<WordsInput>> entry : map.entrySet()) {
+                    WordsInput wordsInput = new WordsInput(entry.getKey(), entry.getValue().size());
+                    list.add(wordsInput);
                 }
-                inputList = list;
+                wordsInputList = list;
 
-                inputList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
+                wordsInputList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
 
                 StringJoiner joiner = new StringJoiner(DELIMITER);
-                for (Input w : inputList) {
+                for (WordsInput w : wordsInputList) {
                     String s = w.getValue() + " " + w.getWordCount();
                     joiner.add(s);
                 }
@@ -41,15 +41,15 @@ public class WordFrequencyGame {
         }
     }
 
-    private Map<String, List<Input>> getListMap(List<Input> inputList) {
-        Map<String, List<Input>> map = new HashMap<>();
-        for (Input input : inputList) {
-            if (!map.containsKey(input.getValue())) {
+    private Map<String, List<WordsInput>> getListMap(List<WordsInput> wordsInputList) {
+        Map<String, List<WordsInput>> map = new HashMap<>();
+        for (WordsInput wordsInput : wordsInputList) {
+            if (!map.containsKey(wordsInput.getValue())) {
                 ArrayList arr = new ArrayList<>();
-                arr.add(input);
-                map.put(input.getValue(), arr);
+                arr.add(wordsInput);
+                map.put(wordsInput.getValue(), arr);
             } else {
-                map.get(input.getValue()).add(input);
+                map.get(wordsInput.getValue()).add(wordsInput);
             }
         }
         return map;
